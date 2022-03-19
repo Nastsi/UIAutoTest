@@ -1,5 +1,3 @@
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.time.Duration;
 
 import org.junit.jupiter.api.AfterEach;
