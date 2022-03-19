@@ -17,6 +17,12 @@ public class CalculatorPage {
 	@FindBy (xpath = "//div[@class='XRsWPe UUhRt']")
 	WebElement equalSignButton;
 	
+	@FindBy (xpath = "//span[@class='vUGUtc']")
+	WebElement expression;
+	
+	@FindBy (xpath = "//span[@id='cwos']")
+	WebElement result;
+	
 	public CalculatorPage(WebDriver driver)
     {
     	this.driver = driver;
@@ -30,6 +36,14 @@ public class CalculatorPage {
 	
 	public WebElement getEqualSignButton() {
 		return equalSignButton;
+	}
+	
+	public WebElement getExpression() {
+		return expression;
+	}
+	
+	public WebElement getResult() {
+		return result;
 	}
 
 	public void setNumberOrAddOrSubtract(String number) {

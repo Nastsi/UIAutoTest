@@ -1,8 +1,11 @@
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.Duration;
+
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.Assert;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -22,13 +25,13 @@ class UITest {
 		System.setProperty("webdriver.chrome.driver", "/Users/anastasiapischikova/Documents/GitHub/UIAutoTest/UIAutoTest/bin/chromedriver");
 		driver = new ChromeDriver();
 
-		wait = new WebDriverWait(driver,5);
+		wait = new WebDriverWait(driver, Duration.ofSeconds(10));
 	}
 
 	@AfterEach
 	void tearDown() throws Exception {
-		//if (driver != null)
-			//driver.quit();
+		if (driver != null)
+			driver.quit();
 	}
 
 	@Test
@@ -49,6 +52,10 @@ class UITest {
 		site.calculatorPage().setNumberOrAddOrSubtract("+");
 		site.calculatorPage().setNumberOrAddOrSubtract("1");
 		site.calculatorPage().getEqualSignButton().click();
+		
+		Assert.assertEquals(site.calculatorPage().getExpression().getText(),"1 × 2 - 3 + 1 =");
+		Assert.assertEquals(site.calculatorPage().getResult().getText(),"0");
+		
 	}
 
 }
